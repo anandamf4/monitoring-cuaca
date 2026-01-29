@@ -1,0 +1,369 @@
+/* =======================
+   GLOBAL STYLE
+======================= */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+  background: #f4f6f8;
+  color: #222;
+}
+
+/* =======================
+   HEADER UTAMA
+======================= */
+.main-header {
+  max-width: 1400px;
+  margin: 30px auto 40px;
+  padding: 30px 30px 30px 90px; /* kiri diperbesar */
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
+/* Konten header */
+.header-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Logo BMKG */
+.logo {
+  position: absolute;
+  left: 0;
+  height: 75px;
+}
+
+/* Judul */
+.main-header h1 {
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: 2px;
+  font-size: 2.2em;
+}
+
+/* =======================
+   SECTION TITLE
+======================= */
+.section-title {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin: 30px 0 20px;
+  padding-left: 6px;
+  border-left: 6px solid #4ca1af;
+}
+
+/* =======================
+   GALLERY GRID
+======================= */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =======================
+   GALLERY ITEM (FRAME)
+======================= */
+.gallery-item {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+}
+
+/* =======================
+   ITEM TITLE (PER GAMBAR)
+======================= */
+.item-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(44, 62, 80, 0.9),
+    rgba(44, 62, 80, 0.65)
+  );
+
+  z-index: 2;
+  letter-spacing: 0.5px;
+}
+
+/* Supaya judul tidak ketutup gambar */
+.gallery-item img {
+  padding-top: 36px; /* tinggi judul */
+  box-sizing: border-box;
+}
+
+/* =======================
+       ASPECT RATIO
+======================= */
+.gallery-item::before {
+  content: "";
+  display: block;
+  padding-top: 60%;
+}
+
+/* =======================
+   IMAGE STYLE
+======================= */
+.gallery-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+/* =======================
+   LIGHTBOX OVERLAY
+======================= */
+.lightbox {
+  display: flex;
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(60, 60, 60, 0.85);
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+
+/* =======================
+   LIGHTBOX IMAGE
+======================= */
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 14px;
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.7);
+  background: #000 url("spinner.gif") center no-repeat;
+}
+
+/* =======================
+   CLOSE BUTTON
+======================= */
+.lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 42px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.lightbox .close:hover {
+  transform: scale(1.15);
+}
+
+/* =======================
+   ANIMATIONS
+======================= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+/* =======================
+   LIGHTBOX STATE
+======================= */
+.lightbox.show {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.lightbox.hide {
+  animation: fadeOut 0.3s ease forwards;
+  pointer-events: none;
+}
+
+.lightbox.show .lightbox-img {
+  animation: zoomIn 0.35s ease;
+}
+
+/* =======================
+   FOOTER
+======================= */
+.footer {
+  margin-top: 60px;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+  border-top: 1px solid #ddd;
+}
+
+/* =====================================================
+   TAMBAHAN UNTUK JAM 00 / 12 & SUB SECTION
+   (TIDAK MENGUBAH DESAIN UTAMA)
+===================================================== */
+
+/* Sub-judul parameter (Isobar, RH, dll) */
+.sub-title {
+  margin: 35px 0 15px;
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #2c3e50;
+  padding-left: 6px;
+  border-left: 4px solid #4ca1af;
+}
+
+/* Label jam (00 UTC / 12 UTC) */
+.utc-label {
+  margin: 18px 0 10px;
+  font-size: 0.95em;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.5px;
+}
+
+/* Supaya gallery di dalam gallery tidak jadi nested grid */
+.gallery .gallery {
+  display: contents;
+}
+
+/* Spasi antar blok jam */
+.utc-label + .gallery {
+  margin-bottom: 40px;
+}
+
+/* =======================
+   CLOCK BAR (OUTSIDE HEADER)
+======================= */
+.clock-bar {
+  max-width: 1400px;
+  margin: -20px auto 30px; /* naik dikit ke header */
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.clock {
+  background: #ffffff;
+  padding: 10px 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  text-align: center;
+  font-family: 'Courier New', monospace;
+}
+
+.clock-label {
+  display: block;
+  font-size: 0.7em;
+  letter-spacing: 1px;
+  color: #666;
+}
+
+.clock span:last-child {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* =========================
+   IMAGE LOADING SPINNER
+========================= */
+.img-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f2f4f7;
+  z-index: 1;
+}
+
+.img-loader::after {
+  content: "";
+  width: 42px;
+  height: 42px;
+  border: 4px solid #cfd6dc;
+  border-top-color: #4ca1af;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* image awalnya invisible */
+.gallery-item img {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* saat ready */
+.gallery-item.loaded img {
+  opacity: 1;
+}
+
+.gallery-item.loaded .img-loader {
+  display: none;
+}

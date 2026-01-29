@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Monitoring Cuaca</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox hide">
+  <span class="close">&times;</span>
+  <img class="lightbox-img" id="lightboxImg">
+</div>
+
+<header class="main-header">
+  <div class="header-content">
+    <img src="logo-bmkg.webp" alt="Logo BMKG" class="logo">
+    <h1>DINAMIKA ATMOSFER</h1>
+  </div>
+</header>
+
+<div class="clock-bar">
+  <div class="clock">
+    <span class="clock-label">WIB</span>
+    <span id="clock-wib">--:--:--</span>
+  </div>
+  <div class="clock">
+    <span class="clock-label">UTC</span>
+    <span id="clock-utc">--:--:--</span>
+  </div>
+</div>
+
+
+<!-- ================= GLOBAL ================= -->
+<section>
+  <h2 class="section-title">GLOBAL</h2>
+
+  <!-- SATU GRID GLOBAL -->
+  <div class="gallery" id="global-gallery">
+
+    <!-- STATIS -->
+    <div class="gallery-item">
+      <div class="item-title">SST Indonesia</div>
+      <img src="https://web-meteo.bmkg.go.id/media/data/bmkg/mfy/ecmwf/Analisis/sst_anal_sea_dy.png">
+    </div>
+
+    <div class="gallery-item">
+      <div class="item-title">Anomali SST Indonesia</div>
+      <img src="https://web-meteo.bmkg.go.id/media/data/bmkg/mfy/ecmwf/Analisis/ssta_anal_sea_dy.png">
+    </div>
+
+    <div class="gallery-item">
+      <div class="item-title">Nino 3.4 Monitoring</div>
+      <img src="https://www.bom.gov.au/clim_data/IDCK000072/rnino_3.4.png">
+    </div>
+
+    <!-- DINAMIS -->
+    <div id="nino34-forecast"></div>
+
+    <div class="gallery-item">
+      <div class="item-title">IOD Monitoring</div>
+      <img src="https://www.bom.gov.au/clim_data/IDCK000072/iod1.png">
+    </div>
+
+    <div id="iod-forecast"></div>
+
+    <div class="gallery-item">
+      <div class="item-title">MJO Monitoring</div>
+      <img src="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/MJO/obs_phase40_full.gif">
+    </div>
+
+    <div class="gallery-item">
+      <div class="item-title">MJO Forecast</div>
+      <img src="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/MJO/ensplume_full.gif">
+    </div>
+
+    <div class="gallery-item">
+      <div class="item-title">OLR / Equatorial Waves</div>
+      <img src="https://ncics.org/pub/mjo/v2/map/olr.cfs.all.indonesia.1.png">
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= REGIONAL ================= -->
+<section>
+  <h2 class="section-title">REGIONAL</h2>
+
+  <!-- SATU GRID REGIONAL -->
+  <div class="gallery" id="regional-gallery">
+
+    <!-- STATIS -->
+    <div class="gallery-item">
+      <div class="item-title">Tropical Cyclone Monitoring</div>
+      <img src="https://www.metoc.navy.mil/jtwc/products/abpwsair.jpg">
+    </div>
+
+    <div class="gallery-item">
+      <div class="item-title">Cold Surge Index</div>
+      <img src="https://web-meteo.bmkg.go.id/media/data/bmkg/mfy/sur_idx.png">
+    </div>
+
+    <div class="gallery-item">
+      <div class="item-title">Monsoon Index (AUSMI)</div>
+      <img src="https://web-meteo.bmkg.go.id/media/data/bmkg/MonsoonIndex/ausmi.png">
+    </div>
+
+    <!-- DINAMIS -->
+    <div id="streamline-925-00"></div>
+    <div id="streamline-925-12"></div>
+    <div id="streamline-forecast"></div>
+
+  </div>
+</section>
+
+<!-- ================= LOKAL ================= -->
+<section>
+  <h2 class="section-title">LOKAL</h2>
+
+  <!-- SATU GRID LOKAL -->
+  <div class="gallery" id="lokal-gallery">
+
+    <!-- ISOBAR -->
+    <div id="isobar-00"></div>
+    <div id="isobar-12"></div>
+
+    <!-- RH -->
+    <div id="rh-850-00"></div>
+    <div id="rh-850-12"></div>
+
+    <div id="rh-700-00"></div>
+    <div id="rh-700-12"></div>
+
+    <div id="rh-500-00"></div>
+    <div id="rh-500-12"></div>
+
+    <!-- STABILITY INDEX -->
+    <div id="index-ki-00"></div>
+    <div id="index-ki-12"></div>
+
+    <div id="index-si-00"></div>
+    <div id="index-si-12"></div>
+
+    <div id="index-li-00"></div>
+    <div id="index-li-12"></div>
+
+    <!-- HIMAWARI -->
+    <div class="gallery-item">
+      <div class="item-title">Himawari IR Indonesia</div>
+      <img src="https://inderaja.bmkg.go.id/IMAGE/HIMA/H08_EH_Indonesia.png">
+    </div>
+
+    <div class="gallery-item">
+      <div class="item-title">Himawari IR Jambi</div>
+      <img src="https://inderaja.bmkg.go.id/IMAGE/HIMA/H08_EH_Jambi.png">
+    </div>
+
+    <div class="gallery-item">
+      <div class="item-title">Himawari Rain Rate Indonesia</div>
+      <img src="https://inderaja.bmkg.go.id/IMAGE/HIMA/H08_RP_Indonesia.png">
+    </div>
+
+    <div class="gallery-item">
+      <div class="item-title">Himawari Rain Rate Jambi</div>
+      <img src="https://inderaja.bmkg.go.id/IMAGE/HIMA/H08_RP_Jambi.png">
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 anandamf – Stasiun Meteorologi Kelas 1 Sultan Thaha Jambi
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
